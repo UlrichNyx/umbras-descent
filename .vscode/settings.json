@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Umbra's Descent.sln"
+    "dotnet.defaultSolution": "umbras-descent.sln"
 }
