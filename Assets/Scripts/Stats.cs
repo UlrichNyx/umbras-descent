@@ -13,29 +13,95 @@ public class Stats : MonoBehaviour
         }
     }
     GameManager _gameManager;
-    public float MaxHealth;
-    public float myHealth;
+    public int baseShadowEssence;
     public int ShadowEssence;
+
+    public static int maxShadowEssence = 9999;
+
+    public bool invincible;
+
+    public bool invisible;
+
+    public float moveSpeed;
+
+    private SpriteRenderer spriteRenderer;
+
+    private float invisibleAlpha = 0.5f;
+    private float visibleAlpha = 1f;
+
+    private Color initialColor;
+    private float colorChangeSpeed = 1.0f;
+
+    private float rainbowTime;
+
+    public int damage;
 
     void Start()
     {
-        myHealth = MaxHealth;
+        ShadowEssence = baseShadowEssence;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        initialColor = spriteRenderer.color;
     }
     
-    public virtual void ModifyHealth(float amount)
+    public virtual void ModifyHealth(int amount)
     {
-        myHealth += amount;
-        if(myHealth <= 0)
+        Debug.Log("MODIFYING HEALTH");
+        ShadowEssence += amount;
+        if(ShadowEssence <= 0)
         {
             Die();
         }
-        if(myHealth > MaxHealth)
+        if(ShadowEssence > maxShadowEssence)
         {
-            myHealth = MaxHealth;
+            ShadowEssence = maxShadowEssence;
         }
+    }
+
+
+    void Update()
+    {
+        RainbowEffect();
+    }
+
+    public void RainbowEffect()
+    {
+        if(invincible)
+        {
+            rainbowTime += Time.deltaTime * colorChangeSpeed;
+            float hue = Mathf.Repeat(rainbowTime, 1.0f);
+            Color newColor = Color.HSVToRGB(hue, 1.0f, 1.0f);
+            spriteRenderer.color = newColor;
+        }
+    }
+
+    public void SetInvincible(bool value)
+    {
+        invincible = value;
+        if(!value)
+        {
+            spriteRenderer.color = initialColor;
+        }
+
+    }
+
+    public void SetInvisible(bool value)
+    {
+        invisible = value;
+        Color currentColor = spriteRenderer.color;
+
+        if(value)
+        {
+            spriteRenderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, invisibleAlpha);
+        }
+        else
+        {
+            spriteRenderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, visibleAlpha);
+        }
+
     }
     public virtual void Die()
     {
         gameManager.SpawnEssence(transform.position,ShadowEssence);
+        gameObject.SetActive(false);
     }
 }
