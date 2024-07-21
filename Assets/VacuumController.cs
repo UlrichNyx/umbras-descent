@@ -5,7 +5,6 @@ public class VacuumController : MonoBehaviour
 {
 
     public Vector3 direction;
-    public int attackRange;
     public bool isSucking;
 
     public LayerMask enemyLayer;
@@ -25,7 +24,7 @@ public class VacuumController : MonoBehaviour
         stats = GetComponentInParent<Stats>();
      }
 
-    void Update()
+    void FixedUpdate()
     {
         FollowCursor();
         Suck();
@@ -61,9 +60,9 @@ public class VacuumController : MonoBehaviour
             lineRenderer.enabled = false;
             return;
         }
-        Vector3 endPoint = transform.position + direction.normalized * attackRange;
+        Vector3 endPoint = transform.position + direction.normalized * stats.AttackRange;
         Debug.DrawLine(transform.position, endPoint, Color.red);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, attackRange, enemyLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, stats.AttackRange, enemyLayer);
         // Set the positions of the line
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
@@ -71,7 +70,7 @@ public class VacuumController : MonoBehaviour
         
         if(hit.collider != null)
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);
+            //Debug.Log("Raycast hit: " + hit.collider.name);
             hit.collider.GetComponent<Stats>().ModifyHealth(-stats.damage);
             stats.ModifyHealth(stats.damage);
             UIManager.instance.SetShadowEssenceSlider(stats.ShadowEssence);

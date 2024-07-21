@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public PlayerController player;
     public void PlayerDeath()
     {
         Debug.Log("GAME OVER");
