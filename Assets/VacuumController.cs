@@ -71,7 +71,7 @@ public class VacuumController : MonoBehaviour
         
         if(hit.collider != null)
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);
+            //Debug.Log("Raycast hit: " + hit.collider.name);
             hit.collider.GetComponent<Stats>().ModifyHealth(-stats.damage);
             stats.ModifyHealth(stats.damage);
             UIManager.instance.SetShadowEssenceSlider(stats.ShadowEssence);

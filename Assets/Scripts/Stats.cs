@@ -36,7 +36,7 @@ public class Stats : MonoBehaviour
 
     public int damage;
 
-    void Start()
+    public virtual void Start()
     {
         ShadowEssence = baseShadowEssence;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -45,7 +45,7 @@ public class Stats : MonoBehaviour
     
     public virtual void ModifyHealth(int amount)
     {
-        Debug.Log("MODIFYING HEALTH");
+        //Debug.Log("MODIFYING HEALTH");
         ShadowEssence += amount;
         if(ShadowEssence <= 0)
         {
@@ -102,6 +102,5 @@ public class Stats : MonoBehaviour
     public virtual void Die()
     {
         gameManager.SpawnEssence(transform.position,ShadowEssence);
-        gameObject.SetActive(false);
     }
 }
