@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621c980fac544de418281f3264e394dc, type: 3}
+  m_Name: RestorativeSP
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Restorative Shadow Potion
+    itemDescription: 'Grants 100 + 0.5 * X SE where X is the amount spent to craft
+      it.
+
+
+
+      "Created from combining colorful leaves together. How  convenient!"
+
+'
+    itemIcon: {fileID: 21300000, guid: 7bd51259ac631aa4a9e45e373bf8af2e, type: 3}
+  craftingRecipe:
+    requiredMonsterParts:
+    - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
+    - {fileID: 11400000, guid: 56c55f379d13ced4996ab2cc5a20bf0e, type: 2}
+    - {fileID: 11400000, guid: 34d1191aef18c554da38c806a3e79940, type: 2}
+    minimumShadowEssence: 100

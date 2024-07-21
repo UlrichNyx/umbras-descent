@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isRolling = false;
     private float lastRollTime;
+
+    public bool canMove = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,8 +32,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        HandleActions();
+        if(canMove)
+        {
+            Move();
+            HandleActions();
+        }
         HandleInteraction();
     }
 
@@ -173,18 +178,11 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        Debug.Log("Interact action performed");
-        // Add your interaction logic here
-        // This could be for opening doors, dialogue, or picking up items
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 3f, layerMask))
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 3f, layerMask);
+        if (hitCollider)
         {
-            if (hit.collider.CompareTag("Interactable"))
-            {
-                // Example: hit.collider.GetComponent<Interactable>().Interact();
-                Debug.Log("Interacted with " + hit.collider.name);
-            }
+            Debug.Log("HIT THE OBJECT");
+            hitCollider.GetComponent<Interactable>().Interact();
         }
     }
 }
