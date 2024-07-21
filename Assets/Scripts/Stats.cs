@@ -15,27 +15,19 @@ public class Stats : MonoBehaviour
     GameManager _gameManager;
     public int baseShadowEssence;
     public int ShadowEssence;
-
     public static int maxShadowEssence = 9999;
-
     public bool invincible;
-
     public bool invisible;
-
     public float moveSpeed;
-
     private SpriteRenderer spriteRenderer;
-
     private float invisibleAlpha = 0.5f;
     private float visibleAlpha = 1f;
-
     private Color initialColor;
     private float colorChangeSpeed = 1.0f;
-
     private float rainbowTime;
-
     public int damage;
-
+    public int AttackRange;
+    public bool IsDead = false;
     public virtual void Start()
     {
         ShadowEssence = baseShadowEssence;
@@ -58,7 +50,7 @@ public class Stats : MonoBehaviour
     }
 
 
-    void Update()
+    public virtual void Update()
     {
         RainbowEffect();
     }
@@ -101,6 +93,7 @@ public class Stats : MonoBehaviour
     }
     public virtual void Die()
     {
+        IsDead = true;
         gameManager.SpawnEssence(transform.position,ShadowEssence);
     }
 }
