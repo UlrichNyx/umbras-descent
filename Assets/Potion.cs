@@ -2,8 +2,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Potion")]
-public class Potion :  ScriptableObject
+public class Potion :  Item
 {
-    public Item item;
     public Recipe craftingRecipe;
 }

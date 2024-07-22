@@ -96,4 +96,9 @@ public class Stats : MonoBehaviour
         IsDead = true;
         gameManager.SpawnEssence(transform.position,ShadowEssence);
     }
+
+    public bool EssenceCheck(int amount)
+    {
+        return ShadowEssence > amount;
+    }
 }

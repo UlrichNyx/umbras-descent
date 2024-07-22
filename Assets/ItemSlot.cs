@@ -7,7 +7,7 @@ public class ItemSlot : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Image>().sprite = potion.item.itemIcon;
+        GetComponent<Image>().sprite = potion.itemIcon;
     }
     
     public void OnSelect()

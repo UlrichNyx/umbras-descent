@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Monster Part")]
-public class MonsterPart :  ScriptableObject
+public class MonsterPart :  Item
 {
-    public Item item;
+    
 }

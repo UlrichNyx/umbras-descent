@@ -12,17 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621c980fac544de418281f3264e394dc, type: 3}
   m_Name: RestorativeSP
   m_EditorClassIdentifier: 
-  item:
-    itemName: Restorative Shadow Potion
-    itemDescription: 'Grants 100 + 0.5 * X SE where X is the amount spent to craft
-      it.
-
-
-
-      "Created from combining colorful leaves together. How  convenient!"
-
-'
-    itemIcon: {fileID: 21300000, guid: 7bd51259ac631aa4a9e45e373bf8af2e, type: 3}
+  itemName: 
+  itemDescription: 
+  itemIcon: {fileID: 21300000, guid: e81c8a4f3ed1f7548aa4b178d7b8b839, type: 3}
   craftingRecipe:
     requiredMonsterParts:
     - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
