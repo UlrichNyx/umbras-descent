@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621c980fac544de418281f3264e394dc, type: 3}
   m_Name: RestorativeSP
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
+  itemName: Restorative Shadow Potion
+  itemDescription: 'abc
+
+'
   itemIcon: {fileID: 21300000, guid: e81c8a4f3ed1f7548aa4b178d7b8b839, type: 3}
   craftingRecipe:
     requiredMonsterParts:
