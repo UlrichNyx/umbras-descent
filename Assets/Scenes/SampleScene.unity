@@ -267,6 +267,11 @@ MonoBehaviour:
   player: {fileID: 1891319815}
   PickUpPrefab: {fileID: 0}
   inCombat: 0
+  AllItems:
+  - {fileID: 11400000, guid: b3b22c46e933fa84b98cb288abb4e76c, type: 2}
+  - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
+  - {fileID: 11400000, guid: 798ae10397299f54c86a0bb79db43fb8, type: 2}
+  - {fileID: 11400000, guid: c370a82cf16ae9845b8d3513600858a5, type: 2}
 --- !u!4 &230995770
 Transform:
   m_ObjectHideFlags: 0
@@ -16193,11 +16198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56486a2345d31f94fa5e0a5faacc7f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllItems:
-  - {fileID: 11400000, guid: 56c55f379d13ced4996ab2cc5a20bf0e, type: 2}
-  - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
-  - {fileID: 11400000, guid: 34d1191aef18c554da38c806a3e79940, type: 2}
-  - {fileID: 11400000, guid: c370a82cf16ae9845b8d3513600858a5, type: 2}
 --- !u!1 &1953665606
 GameObject:
   m_ObjectHideFlags: 0
@@ -16375,6 +16375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7556671482624545399, guid: da9be6405d78f5c4c819466bdc122b99, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: b3b22c46e933fa84b98cb288abb4e76c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

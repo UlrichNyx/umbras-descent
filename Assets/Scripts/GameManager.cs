@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -8,9 +10,15 @@ public class GameManager : Singleton<GameManager>
     public GameObject PickUpPrefab;
     public bool inCombat;
     List<GameObject> PickUps;
-
+    public Item[] AllItems;
+    Dictionary<string,Item> itemFinder;
     void Awake()
     {
+        itemFinder = new Dictionary<string, Item>();
+        foreach(Item i in AllItems)
+        {
+            itemFinder.Add(i.name,i);
+        }
         PickUps = new List<GameObject>();
     }
     public void ToggleMovement(bool value)
@@ -36,6 +44,11 @@ public class GameManager : Singleton<GameManager>
         tempItem.amount = amount;
         PickUps.Add(temp);
     }
+
+    public void SpawnItem(Vector3 position,string item, int amount)   
+    {
+        if(itemFinder.ContainsKey(item)) SpawnItem(position,itemFinder[item],amount);
+    } 
 
     public void DeleteItem(GameObject item)
     {

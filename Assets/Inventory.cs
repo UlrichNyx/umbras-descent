@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Item[] AllItems;
     public Dictionary<Item,int> myItems;
     UIManager uIManager;
+    GameManager gameManager;
     void Start()
     {
+        gameManager = GameManager.instance;
         uIManager = UIManager.instance;
         myItems = new Dictionary<Item, int>();
-        foreach(Item i in AllItems)
+        foreach(Item i in gameManager.AllItems)
         {
             myItems.Add(i,0);
         }

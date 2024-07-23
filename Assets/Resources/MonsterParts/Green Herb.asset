@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e60cd5d7fbb4c43b3fac913d59960b, type: 3}
   m_Name: Green Herb
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Green Herb
   itemDescription: 
-  itemIcon: {fileID: 21300000, guid: fe929bce14571514a8c9739a74774661, type: 3}
+  itemIcon: {fileID: 0}
