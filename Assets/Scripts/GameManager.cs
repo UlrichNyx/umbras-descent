@@ -5,9 +5,14 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public PlayerController player;
-
+    public GameObject PickUpPrefab;
     public bool inCombat;
+    List<GameObject> PickUps;
 
+    void Awake()
+    {
+        PickUps = new List<GameObject>();
+    }
     public void ToggleMovement(bool value)
     {
         player.canMove = value;
@@ -23,8 +28,18 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("GAME OVER");
     }
 
-    public void SpawnEssence(Vector2 position, int amount)
+    public void SpawnItem(Vector3 position,Item item, int amount)
     {
-        Debug.Log("Spawning Essense");
+        GameObject temp = Instantiate(PickUpPrefab,position,Quaternion.identity);
+        PickUpItem tempItem = temp.GetComponent<PickUpItem>();
+        tempItem.item = item;
+        tempItem.amount = amount;
+        PickUps.Add(temp);
+    }
+
+    public void DeleteItem(GameObject item)
+    {
+        if(PickUps.Contains(item)) PickUps.Remove(item);
+        Destroy(item);
     }
 }

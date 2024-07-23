@@ -94,7 +94,6 @@ public class Stats : MonoBehaviour
     public virtual void Die()
     {
         IsDead = true;
-        gameManager.SpawnEssence(transform.position,ShadowEssence);
     }
 
     public bool EssenceCheck(int amount)
