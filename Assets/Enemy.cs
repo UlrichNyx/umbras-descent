@@ -19,6 +19,7 @@ public class Enemy : Stats
     {
         base.Die();
         gameObject.SetActive(false);
+        gameManager.SpawnItem(transform.position,"Red Herb",1);
     }
 
     public override void Update()
