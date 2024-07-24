@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Green Herb
   itemDescription: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 1709343558, guid: 3943e57c804a6234ba34644677cef12a, type: 3}

@@ -20,10 +20,11 @@ public class PlayerController : MonoBehaviour
 
     private bool isRolling = false;
     private float lastRollTime;
-
+    public Inventory inventory;
     public bool canMove = true;
     void Start()
     {
+        inventory = GetComponent<Inventory>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>(); 
         vacuumController = GetComponentInChildren<VacuumController>();
@@ -181,7 +182,7 @@ public class PlayerController : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 3f, layerMask);
         if (hitCollider)
         {
-            Debug.Log("HIT THE OBJECT");
+            //Debug.Log("HIT THE OBJECT");
             hitCollider.GetComponent<Interactable>().Interact();
         }
     }
