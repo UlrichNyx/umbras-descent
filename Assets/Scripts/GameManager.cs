@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     public PlayerController player;
     public GameObject PickUpPrefab;
     public bool inCombat;
-    List<GameObject> PickUps;
+    public List<GameObject> PickUps;
     public Item[] AllItems;
     public Recipe[] AllRecipes;
     Dictionary<string,Item> itemFinder;

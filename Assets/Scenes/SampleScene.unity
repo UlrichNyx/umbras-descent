@@ -267,6 +267,7 @@ MonoBehaviour:
   player: {fileID: 1891319815}
   PickUpPrefab: {fileID: 1593146696794371663, guid: da9be6405d78f5c4c819466bdc122b99, type: 3}
   inCombat: 0
+  PickUps: []
   AllItems:
   - {fileID: 11400000, guid: b3b22c46e933fa84b98cb288abb4e76c, type: 2}
   - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
@@ -907,8 +908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9baf5a969c8294fa6a354de3983807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseShadowEssence: 100
-  ShadowEssence: 100
+  baseShadowEssence: 20
+  ShadowEssence: 20
   invincible: 0
   invisible: 0
   moveSpeed: 1
@@ -16129,7 +16130,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1891319815
 MonoBehaviour:
