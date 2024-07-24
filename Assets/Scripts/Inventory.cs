@@ -6,10 +6,12 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public Dictionary<Item,int> myItems;
+    public List<Recipe> myRecipes;
     UIManager uIManager;
     GameManager gameManager;
     void Start()
     {
+        myRecipes = new List<Recipe>();
         gameManager = GameManager.instance;
         uIManager = UIManager.instance;
         myItems = new Dictionary<Item, int>();
@@ -23,6 +25,8 @@ public class Inventory : MonoBehaviour
 
     public void ModifyItem(Item item, int amount)
     {
+        if(item == null) return;
+        
         if(!myItems.ContainsKey(item)) 
         {
             Debug.Log("Item doesn't exist in dictionary, put in inspector please");
@@ -36,5 +40,10 @@ public class Inventory : MonoBehaviour
         }
 
         uIManager.UpdateInventory(myItems);
+    }
+
+    public void ReceiveRecipe(Recipe recipe)
+    {
+        if(recipe != null) myRecipes.Add(recipe);
     }
 }

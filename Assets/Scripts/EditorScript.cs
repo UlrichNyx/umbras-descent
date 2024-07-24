@@ -11,12 +11,14 @@ public class EditorScript : EditorWindow
     [MenuItem("Helper/FindItems")]
     static void FindItems() {
         List<Item> items = new List<Item>();
-        Debug.Log(Application.dataPath + "/ScriptableObjects/MonsterParts");
+        List<Recipe> tempRecipes = new List<Recipe>();
         Item[] objects = Resources.LoadAll<Item>("MonsterParts");
         Item[] objects2 = Resources.LoadAll<Item>("Potions");
-        Debug.Log("items found " + objects.Length);
+        Recipe[] recipes = Resources.LoadAll<Recipe>("Recipes");
         items.AddRange(objects);
         items.AddRange(objects2);
+        tempRecipes.AddRange(recipes);
+        GameManager.instance.AllRecipes = tempRecipes.ToArray();
         GameManager.instance.AllItems = items.ToArray();
     }
 

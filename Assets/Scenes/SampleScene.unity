@@ -272,6 +272,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
   - {fileID: 11400000, guid: 798ae10397299f54c86a0bb79db43fb8, type: 2}
   - {fileID: 11400000, guid: c370a82cf16ae9845b8d3513600858a5, type: 2}
+  AllRecipes:
+  - {fileID: 11400000, guid: 6680ea2b9e398c046b4b771357cd60ff, type: 2}
 --- !u!4 &230995770
 Transform:
   m_ObjectHideFlags: 0
@@ -16198,6 +16200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56486a2345d31f94fa5e0a5faacc7f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRecipes: []
 --- !u!1 &1953665606
 GameObject:
   m_ObjectHideFlags: 0

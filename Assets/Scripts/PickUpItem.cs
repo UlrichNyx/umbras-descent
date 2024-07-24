@@ -5,5 +5,6 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     public Item item;
+    public Recipe recipe;
     public int amount;
 }

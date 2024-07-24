@@ -98,6 +98,7 @@ public class VacuumController : MonoBehaviour
                     if(Vector2.Distance(tempItem.transform.position,transform.position) < 0.5f)
                     {
                         inventory.ModifyItem(tempItem.item,tempItem.amount);
+                        inventory.ReceiveRecipe(tempItem.recipe);
                         gameManager.DeleteItem(tempItem.gameObject);
                     }
                 }
