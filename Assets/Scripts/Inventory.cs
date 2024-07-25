@@ -46,4 +46,27 @@ public class Inventory : MonoBehaviour
     {
         if(recipe != null) myRecipes.Add(recipe);
     }
+
+    public bool CheckRequirements(Recipe recipe)
+    {
+        if(recipe.ShadowEssence >= gameManager.player.stats.ShadowEssence) return false;
+        for(int i = 0; i < recipe.requirements.Length; i++)
+        {
+            if(myItems[recipe.requirements[i]] < recipe.amounts[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void CraftRecipe(Recipe recipe)
+    {
+        gameManager.player.stats.ModifyHealth(-recipe.ShadowEssence);
+        for(int i = 0; i < recipe.requirements.Length; i++)
+        {
+            ModifyItem(recipe.requirements[i],-recipe.amounts[i]);
+        }
+        ModifyItem(recipe.Result,recipe.AmountMade);
+    }
 }

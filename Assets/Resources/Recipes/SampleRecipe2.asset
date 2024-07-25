@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c793135336605ad46aade0d02d6402e7, type: 3}
-  m_Name: SampleRecipe
+  m_Name: SampleRecipe2
   m_EditorClassIdentifier: 
-  Name: SampleRecipe
-  description: This potion will give you diabetes
+  Name: SampleRecipe2
+  description: This potion is gay
   requirements:
-  - {fileID: 11400000, guid: b3b22c46e933fa84b98cb288abb4e76c, type: 2}
+  - {fileID: 11400000, guid: 798ae10397299f54c86a0bb79db43fb8, type: 2}
   amounts: 01000000
   ShadowEssence: 10
   Result: {fileID: 11400000, guid: c370a82cf16ae9845b8d3513600858a5, type: 2}

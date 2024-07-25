@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     float speedX, speedY;
     Rigidbody2D rb;
 
-    private Stats stats;
+    public Stats stats;
 
     private VacuumController vacuumController;
     // Start is called before the first frame update

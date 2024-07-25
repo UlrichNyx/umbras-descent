@@ -11,4 +11,5 @@ public class Recipe : ScriptableObject
     public int[] amounts;
     public int ShadowEssence;
     public Item Result;
+    public int AmountMade = 1;
 }

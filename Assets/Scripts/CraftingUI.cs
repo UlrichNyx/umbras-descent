@@ -12,8 +12,10 @@ public class CraftingUI : MonoBehaviour
     public TextMeshProUGUI RecipeDescription;
     GameManager gameManager;
     public List<RecipeSlot> recipeSlots;
+    Recipe ActiveRecipe;
     void OnEnable()
     {
+        ActiveRecipe = null;
         gameManager = GameManager.instance;
         SetRecipes();
         foreach(InventorySlot i in Ingredients)
@@ -28,6 +30,8 @@ public class CraftingUI : MonoBehaviour
     {
         if(recipeSlots == null) recipeSlots = new List<RecipeSlot>();
 
+        foreach(RecipeSlot i in recipeSlots) i.gameObject.SetActive(false);
+
         Recipe[] recipes = gameManager.player.inventory.myRecipes.ToArray();
         for(int i = 0; i < recipes.Length; i++)
         {
@@ -39,6 +43,7 @@ public class CraftingUI : MonoBehaviour
             }
             else
             {
+                recipeSlots[i].gameObject.SetActive(true);
                 recipeSlots[i].SetSlot(recipes[i]);
             }
 
@@ -47,6 +52,7 @@ public class CraftingUI : MonoBehaviour
 
     public void SetCraftingRecipe(Recipe recipe)
     {
+        ActiveRecipe = recipe;
         foreach(InventorySlot i in Ingredients)
         {
             i.gameObject.SetActive(false);
@@ -65,6 +71,19 @@ public class CraftingUI : MonoBehaviour
 
     public void CraftRecipe()
     {
-        Debug.Log("CRAFTING RECIPE");
+        if(ActiveRecipe == null) 
+        {
+            Debug.Log("No Active Recipe");
+            return;
+        }
+        if(!gameManager.player.inventory.CheckRequirements(ActiveRecipe))
+        {
+            Debug.Log("You don't have the ingredients");
+            return;
+        }
+        gameManager.player.inventory.CraftRecipe(ActiveRecipe);
+        Debug.Log("Recipe crafted");
     }
+
+
 }
