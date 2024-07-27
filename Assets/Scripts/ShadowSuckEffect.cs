@@ -27,7 +27,12 @@ public class ShadowSuckEffect : MonoBehaviour
         {
             StopCoroutine(resetCoroutine);
         }
-        resetCoroutine = StartCoroutine(ResetSuckAfterDelay());
+        shadowSuckParticle.Play();
+        if(gameObject.activeInHierarchy)
+        {
+            resetCoroutine = StartCoroutine(ResetSuckAfterDelay());
+        }
+        
     }
 
     private IEnumerator ResetSuckAfterDelay()
@@ -36,6 +41,7 @@ public class ShadowSuckEffect : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         isSucked = false;
         shadowSuckParticle.Stop();
+        
     }
 
     void Update()

@@ -15,6 +15,8 @@ public class VacuumController : Singleton<VacuumController>
     private Stats stats;
     Inventory inventory;
     GameManager gameManager;
+
+    public Transform vaccumTip;
     void Start()
     {
         gameManager = GameManager.instance;
@@ -43,7 +45,7 @@ public class VacuumController : Singleton<VacuumController>
             
             // Set the positions of the line
             lineRenderer.enabled = true;
-            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(0, vaccumTip.position);
             lineRenderer.SetPosition(1, endPoint);
         }
     }
