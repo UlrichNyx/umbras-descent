@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour
     private float colorChangeSpeed = 1.0f;
     private float rainbowTime;
     public int damage;
-    public int AttackRange;
+    public float AttackRange;
     public bool IsDead = false;
     public virtual void Start()
     {

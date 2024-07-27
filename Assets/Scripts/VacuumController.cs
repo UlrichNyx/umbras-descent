@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class VacuumController : MonoBehaviour
+public class VacuumController : Singleton<VacuumController>
 {
 
     public Vector3 direction;
@@ -108,6 +108,7 @@ public class VacuumController : MonoBehaviour
                     hit.collider.GetComponent<Stats>().ModifyHealth(-stats.damage);
                     stats.ModifyHealth(stats.damage);
                     UIManager.instance.SetShadowEssenceSlider(stats.ShadowEssence);
+                    hit.collider.GetComponentInChildren<ShadowSuckEffect>().TriggerShadowSuck();
                 }
                 hit.collider.enabled = false;
                 hits.Add(hit.collider);
