@@ -111,7 +111,6 @@ public class Enemy : Stats
         }
     }
 
-
     public static void DrawGizmos(NavMeshAgent agent, bool showPath, bool showAhead)
     {
         if (Application.isPlaying && agent != null)
