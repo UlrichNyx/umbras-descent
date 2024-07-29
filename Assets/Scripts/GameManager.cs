@@ -50,6 +50,7 @@ public class GameManager : Singleton<GameManager>
         tempItem.item = item;
         tempItem.amount = amount;
         PickUps.Add(temp);
+        //Debug.Log("Spawning Item");
     }
     public void SpawnItem(Vector3 position,Recipe item)
     {

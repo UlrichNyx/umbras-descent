@@ -15,9 +15,9 @@ public class UIManager : Singleton<UIManager>
     {
         InventorySlots = new List<InventorySlot>();
     }
-    public void SetShadowEssenceSlider(int currentShadowEssence)
+    public void SetShadowEssenceSlider(float currentShadowEssence)
     { 
-        shadowEssenceSlider.value = ((float) currentShadowEssence / (float) Stats.maxShadowEssence);
+        shadowEssenceSlider.value = currentShadowEssence / Stats.maxShadowEssence;
     }
 
     public void ToggleCraftingUI()

@@ -13,8 +13,8 @@ public class Stats : MonoBehaviour
         }
     }
     GameManager _gameManager;
-    public int baseShadowEssence;
-    public int ShadowEssence;
+    public float baseShadowEssence;
+    public float ShadowEssence;
     public static int maxShadowEssence = 9999;
     public bool invincible;
     public bool invisible;
@@ -25,7 +25,7 @@ public class Stats : MonoBehaviour
     private Color initialColor;
     private float colorChangeSpeed = 1.0f;
     private float rainbowTime;
-    public int damage;
+    public float damage;
     public float AttackRange;
     public bool IsDead = false;
     public virtual void Start()
@@ -35,7 +35,7 @@ public class Stats : MonoBehaviour
         initialColor = spriteRenderer.color;
     }
     
-    public virtual void ModifyHealth(int amount)
+    public virtual void ModifyHealth(float amount)
     {
         //Debug.Log("MODIFYING HEALTH");
         ShadowEssence += amount;

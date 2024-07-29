@@ -14,7 +14,10 @@ public class Enemy : Stats
     public float StopAggroRange;
     public bool Aggroed;
     public List<Vector3> PatrolPoints;
-    
+    public float DropRate;
+    public Item[] DropItems;
+    public float[] DropItemChances;
+    public int[] DropItemAmount;
     public override void Start()
     {
         base.Start();
@@ -37,8 +40,23 @@ public class Enemy : Stats
     {
         base.Die();
         gameObject.SetActive(false);
-        gameManager.SpawnItem(transform.position,"Red Herb",1);
-        gameManager.SpawnItem(transform.position,"SampleRecipe",1);
+        if(Random.Range(0,100) < DropRate)
+        {
+            //Debug.Log("drop rate");
+            float counter = 100;
+            for(int i = 0; i < DropItems.Length; i++)
+            {
+                
+                int number = Random.Range(0,100);
+                counter -= DropItemChances[i];
+                //Debug.Log(number + " - " +counter);
+                if(number >= counter)
+                {
+                    gameManager.SpawnItem(transform.position,DropItems[i],DropItemAmount[i]);
+                    break;
+                }
+            }
+        }
     }
 
     public override void Update()
