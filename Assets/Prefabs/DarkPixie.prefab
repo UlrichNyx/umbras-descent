@@ -4978,27 +4978,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42110bef91977e4e880edb5804f3df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseShadowEssence: 0
-  ShadowEssence: 0
+  baseShadowEssence: 20
+  ShadowEssence: 20
   invincible: 0
   invisible: 0
-  moveSpeed: 0
+  moveSpeed: 0.2
   damage: 25
   AttackRange: 0
   IsDead: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
-  AggroRange: 0
-  StopAggroRange: 0
+    m_Bits: 128
+  AggroRange: 1
+  StopAggroRange: 4
   Aggroed: 0
   PatrolPoints: []
-  DropRate: 0
+  DropRate: -1
   DropItems: []
   DropItemChances: []
   DropItemAmount: 
   chargeSpeed: 0
-  PixieCircle: {fileID: 0}
+  PixieCircle: {fileID: 565174595857263419, guid: 9175d56335ab180458f89b716cab1751, type: 3}
   circle: {fileID: 0}
 --- !u!61 &7497710179184911549
 BoxCollider2D:
