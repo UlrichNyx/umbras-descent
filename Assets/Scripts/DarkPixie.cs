@@ -20,7 +20,6 @@ public class DarkPixie : Stats
     public Item[] DropItems;
     public float[] DropItemChances;
     public int[] DropItemAmount;
-    public float chargeSpeed;
     public GameObject PixieCircle;
     public PixieCircle circle;
     Vector3[] directionArray = new Vector3[] {new Vector3(0,1,0),new Vector3(1,0,0),new Vector3(-1,0,0),new Vector3(0,-1,0)};
@@ -71,22 +70,8 @@ public class DarkPixie : Stats
     public override void Update()
     {
         base.Update();
-        cooldown -= Time.deltaTime;
     }
 
-    float cooldown = 0;
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(cooldown <= 0)
-        {
-            PlayerStats stats = collider.GetComponentInParent<PlayerStats>();
-            if(stats != null)
-            {
-                stats.ModifyHealth(-damage);
-            }
-            ModifyHealth(damage);
-        }
-    }
     IEnumerator ChasePlayer()
     {
         while(!IsDead)
@@ -144,19 +129,6 @@ public class DarkPixie : Stats
                 agent.speed = moveSpeed;
                 agent.SetDestination(PatrolPoints[UnityEngine.Random.Range(0,PatrolPoints.Count)]);
             }
-        }
-    }
-
-    void SetTrail()
-    {
-        if(agent.pathStatus != NavMeshPathStatus.PathInvalid)
-        {
-            line.positionCount = agent.path.corners.Length;
-            for(int i = 0; i < agent.path.corners.Length; i++)
-            {   
-                line.SetPosition(i,agent.path.corners[i]);
-            }
-            line.enabled = true;
         }
     }
 
