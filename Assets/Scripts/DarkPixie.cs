@@ -83,6 +83,7 @@ public class DarkPixie : Stats
             if((!Aggroed && distance < AggroRange) || Aggroed)
             {
                 Aggroed = true;
+                SetAnimatorParameter(AnimationParameters.Movement, false);
                 if(distance >= StopAggroRange)
                 {
                     Aggroed = false;
@@ -128,6 +129,7 @@ public class DarkPixie : Stats
             {
                 agent.speed = moveSpeed;
                 agent.SetDestination(PatrolPoints[UnityEngine.Random.Range(0,PatrolPoints.Count)]);
+                SetAnimatorParameter(AnimationParameters.Movement, true);
             }
         }
     }

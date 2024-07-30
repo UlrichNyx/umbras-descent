@@ -89,6 +89,7 @@ public class Chameleon : Stats
                 if(distance >= StopAggroRange)
                 {
                     Aggroed = false;
+                    SetAnimatorParameter(AnimationParameters.Movement, false);
                     continue;
                 }
                 //Debug.Log("Preparing");
@@ -101,6 +102,11 @@ public class Chameleon : Stats
                     Vector2 dir = target - new Vector2(tongueParent.position.x,tongueParent.position.y);
                     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     tongueParent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                    if (agent.velocity.sqrMagnitude > 0.01f)
+                    {
+                        SetAnimatorParameter(AnimationParameters.Movement, false);
+                    }
                     while(timer <= 1 && !myTongueScript.hit)
                     {
                         timer += Time.deltaTime;
@@ -126,6 +132,7 @@ public class Chameleon : Stats
                 else
                 {
                     agent.SetDestination(target);
+                    SetAnimatorParameter(AnimationParameters.Movement, true);
                 }
                 
             }
@@ -133,11 +140,13 @@ public class Chameleon : Stats
             {
                 agent.speed = moveSpeed;
                 agent.SetDestination(PatrolPoints[0]);
+                SetAnimatorParameter(AnimationParameters.Movement, true);
             }
             else if(color.a != 0.03f)
             {
                 color.a = 0.03f;
                 myBody.color = color;
+                SetAnimatorParameter(AnimationParameters.Movement, false);
             }
         }
     }

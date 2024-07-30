@@ -18,6 +18,10 @@ public class Enemy : Stats
     public Item[] DropItems;
     public float[] DropItemChances;
     public int[] DropItemAmount;
+
+
+
+
     public override void Start()
     {
         base.Start();
@@ -35,6 +39,7 @@ public class Enemy : Stats
             }
         }
     }
+
 
     public override void Die()
     {

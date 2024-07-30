@@ -28,11 +28,40 @@ public class Stats : MonoBehaviour
     public float damage;
     public float AttackRange;
     public bool IsDead = false;
+
+    public bool isFlipped = false;
+
+    public Vector3 previousPosition;
+
+    public Vector3 currentPosition;
+
+    public Animator animator;
+    public enum AnimationParameters {
+        Movement
+    }
     public virtual void Start()
     {
         ShadowEssence = baseShadowEssence;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         initialColor = spriteRenderer.color;
+        animator = GetComponentInChildren<Animator>();
+        previousPosition = transform.position;
+    }
+
+    
+    public void SetAnimatorParameter(AnimationParameters param, bool value)
+    {
+        if(!animator)
+        {
+            return;
+        }
+
+        animator.SetBool(param.ToString(), value);
+    }
+
+    public void SetSpriteFlipped(float horizontalMovement)
+    {
+        spriteRenderer.flipX = horizontalMovement >= 0 ? false : true;
     }
     
     public virtual void ModifyHealth(float amount)
@@ -53,6 +82,11 @@ public class Stats : MonoBehaviour
     public virtual void Update()
     {
         RainbowEffect();
+        currentPosition = transform.position;
+        float deltaX = currentPosition.x - previousPosition.x;
+        SetSpriteFlipped(deltaX);
+        previousPosition = currentPosition;
+
     }
 
     public void RainbowEffect()
