@@ -13,8 +13,8 @@ public class Stats : MonoBehaviour
         }
     }
     GameManager _gameManager;
-    public float baseShadowEssence;
-    public float ShadowEssence;
+    public float baseShadowEssence = 20;
+    public float ShadowEssence= 20;
     public static int maxShadowEssence = 9999;
     public bool invincible;
     public bool invisible;

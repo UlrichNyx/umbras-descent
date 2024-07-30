@@ -66,8 +66,9 @@ MonoBehaviour:
   StopAggroRange: 4
   Aggroed: 0
   PatrolPoints: []
-  DropRate: -1
-  DropItems: []
+  DropRate: 100
+  DropItems:
+  - {fileID: 11400000, guid: 33e2fd25c51573847a2a99e96efa1b71, type: 2}
   DropItemChances: []
   DropItemAmount: 
   chargeSpeed: 3
