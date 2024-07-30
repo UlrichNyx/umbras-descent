@@ -7,7 +7,7 @@ using UnityEngine.Animations;
 public class CorruptedUnicorn : Stats
 {
     Rigidbody2D rb;
-    LineRenderer lineRenderer;
+    LineRenderer line;
     public LayerMask playerLayer;
     NavMeshAgent agent;
     public float AggroRange;
@@ -23,7 +23,7 @@ public class CorruptedUnicorn : Stats
     {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-        lineRenderer = GetComponent<LineRenderer>();
+        line = GetComponent<LineRenderer>();
         agent.speed = moveSpeed;
         StartCoroutine(ChasePlayer());
 
@@ -92,19 +92,24 @@ public class CorruptedUnicorn : Stats
             if(!Aggroed && distance < AggroRange)
             {
                 Aggroed = true;
-                Debug.Log("Preparing");
-                yield return new WaitForSeconds(2f);
-                Debug.Log("Charging");
-                target = gameManager.player.transform.position;
-                direction = (gameManager.player.transform.position - transform.position).normalized;
+                //Debug.Log("Preparing");
                 agent.speed = chargeSpeed;
                 agent.SetDestination(target + direction * 0.5f);
-                while(agent.remainingDistance > 0.2f || agent.pathPending)
+                agent.isStopped = true;
+                yield return null;
+                SetTrail();
+                yield return new WaitForSeconds(1f);
+                agent.isStopped = false;
+                //Debug.Log("Charging");
+                // target = gameManager.player.transform.position;
+                // direction = (gameManager.player.transform.position - transform.position).normalized;
+                while(agent.remainingDistance > agent.stoppingDistance || agent.pathPending)
                 {
                     yield return null;
                 }
+                line.enabled = false;
             }
-            if(Aggroed)
+            else if(Aggroed)
             {
                 if(distance >= StopAggroRange)
                 {
@@ -112,20 +117,38 @@ public class CorruptedUnicorn : Stats
                 }
                 else
                 {
-                    Debug.Log("Preparing");
-                    yield return new WaitForSeconds(2f);
-                    Debug.Log("Charging");
-                    target = gameManager.player.transform.position;
-                    direction = (gameManager.player.transform.position - transform.position).normalized;
+                    //Debug.Log("Preparing");
                     agent.speed = chargeSpeed;
                     agent.SetDestination(target + direction * 0.5f);
+                    agent.isStopped = true;
+                    yield return null;
+                    SetTrail();
+                    yield return new WaitForSeconds(1f);
+                    agent.isStopped = false;
+                    //Debug.Log("Charging");
+                    // target = gameManager.player.transform.position;
+                    // direction = (gameManager.player.transform.position - transform.position).normalized;
                     while(agent.remainingDistance > 0.2f || agent.pathPending)
                     {
                         yield return null;
                     }
+                    line.enabled = false;
                 }
             }
 
+        }
+    }
+
+    void SetTrail()
+    {
+        if(agent.pathStatus != NavMeshPathStatus.PathInvalid)
+        {
+            line.positionCount = agent.path.corners.Length;
+            for(int i = 0; i < agent.path.corners.Length; i++)
+            {   
+                line.SetPosition(i,agent.path.corners[i]);
+            }
+            line.enabled = true;
         }
     }
 
