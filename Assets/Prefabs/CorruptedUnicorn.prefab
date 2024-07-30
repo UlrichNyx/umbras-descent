@@ -55,7 +55,7 @@ MonoBehaviour:
   ShadowEssence: 20
   invincible: 0
   invisible: 0
-  moveSpeed: 0.5
+  moveSpeed: 0.2
   damage: 20
   AttackRange: 1
   IsDead: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010924518, y: 0.040999055}
+  m_Offset: {x: -0.011445999, y: 0.034734726}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -114,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19675416, y: 0.21155834}
+  m_Size: {x: 0.16963625, y: 0.17511106}
   m_EdgeRadius: 0
 --- !u!195 &406432645155432793
 NavMeshAgent:

@@ -135,7 +135,11 @@ public class CorruptedUnicorn : Stats
                     line.enabled = false;
                 }
             }
-
+            else if((agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending) || !agent.hasPath)
+            {
+                agent.speed = moveSpeed;
+                agent.SetDestination(PatrolPoints[Random.Range(0,PatrolPoints.Count)]);
+            }
         }
     }
 
