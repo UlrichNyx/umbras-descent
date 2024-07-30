@@ -4912,10 +4912,12 @@ MonoBehaviour:
   StopAggroRange: 4
   Aggroed: 0
   PatrolPoints: []
-  DropRate: -1
-  DropItems: []
-  DropItemChances: []
-  DropItemAmount: 
+  DropRate: 100
+  DropItems:
+  - {fileID: 11400000, guid: 8b54c669c3ac0f6498a4fbab49b6470e, type: 2}
+  DropItemChances:
+  - 100
+  DropItemAmount: 01000000
   tongue: {fileID: 587505004847860180}
   tongueCollider: {fileID: 659347385523872134}
   tongueParent: {fileID: 6729781005834635203}

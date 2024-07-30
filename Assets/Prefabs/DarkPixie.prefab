@@ -4947,7 +4947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2215439583923590463
 Transform:
   m_ObjectHideFlags: 0
@@ -4993,11 +4993,12 @@ MonoBehaviour:
   StopAggroRange: 4
   Aggroed: 0
   PatrolPoints: []
-  DropRate: -1
-  DropItems: []
-  DropItemChances: []
-  DropItemAmount: 
-  chargeSpeed: 0
+  DropRate: 100
+  DropItems:
+  - {fileID: 11400000, guid: c97408124f8d9594ab35a0400092dbbe, type: 2}
+  DropItemChances:
+  - 100
+  DropItemAmount: 01000000
   PixieCircle: {fileID: 565174595857263419, guid: 9175d56335ab180458f89b716cab1751, type: 3}
   circle: {fileID: 0}
 --- !u!61 &7497710179184911549
