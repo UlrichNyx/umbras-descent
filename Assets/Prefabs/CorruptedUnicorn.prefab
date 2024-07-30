@@ -69,8 +69,9 @@ MonoBehaviour:
   DropRate: 100
   DropItems:
   - {fileID: 11400000, guid: 33e2fd25c51573847a2a99e96efa1b71, type: 2}
-  DropItemChances: []
-  DropItemAmount: 
+  DropItemChances:
+  - 100
+  DropItemAmount: 01000000
   chargeSpeed: 3
 --- !u!61 &7845686142297189213
 BoxCollider2D:

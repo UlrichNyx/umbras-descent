@@ -48,6 +48,7 @@ public class DarkPixie : Stats
     {
         base.Die();
         gameObject.SetActive(false);
+        Destroy(circle);
         if(UnityEngine.Random.Range(0,100) < DropRate)
         {
             //Debug.Log("drop rate");
