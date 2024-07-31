@@ -25,6 +25,8 @@ public class Chameleon : Stats
     public SpriteRenderer tongue;
     public BoxCollider2D tongueCollider;
     public Transform tongueParent;
+
+    public Transform tongueTip;
     ChameleonTongue myTongueScript;
     public SpriteRenderer myBody;
     Color color;
@@ -111,9 +113,10 @@ public class Chameleon : Stats
                     {
                         timer += Time.deltaTime;
                         float tempScale = Mathf.Lerp(0,1.5f,timer);
-                        tongue.size = new Vector2(0.3f,tempScale);
+                        tongue.size = new Vector2(0.12f,tempScale);
                         tongueCollider.size = new Vector2(0.2f,tempScale);
                         tongueCollider.offset = new Vector2(0,tempScale/2);
+                        tongueTip.position = Vector2.Lerp(tongueTip.position, target, timer);
                         yield return null;
                     }
                     timer = 0;
@@ -122,9 +125,10 @@ public class Chameleon : Stats
                     {
                         timer += Time.deltaTime;
                         float tempScale = Mathf.Lerp(Startvalue,0,timer);
-                        tongue.size = new Vector2(0.3f,tempScale);
+                        tongue.size = new Vector2(0.12f,tempScale);
                         tongueCollider.size = new Vector2(0.2f,tempScale);
                         tongueCollider.offset = new Vector2(0,tempScale/2);
+                        tongueTip.position = Vector2.Lerp(tongueTip.position, tongueParent.position, timer);
                         yield return null;
                     }
                     tongue.gameObject.SetActive(false);
