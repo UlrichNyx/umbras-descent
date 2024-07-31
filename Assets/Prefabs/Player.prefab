@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 6430032606786247933}
   - component: {fileID: 9096921647328161591}
   - component: {fileID: 5985136916980010872}
+  - component: {fileID: 7114337992790992290}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -427,8 +428,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  rollSpeed: 1
-  rollDuration: 0.5
+  rollSpeed: 6
+  rollDistance: 0.5
   rollCooldown: 1.5
   inventory: {fileID: 0}
   canMove: 1
@@ -479,6 +480,10 @@ MonoBehaviour:
   damage: 1
   AttackRange: 0.5
   IsDead: 0
+  isFlipped: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
 --- !u!114 &5985136916980010872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +497,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRecipes: []
+--- !u!114 &7114337992790992290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108862135683211531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4399b682b4337ac41acf194c6ceeba14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowVortexPrefab: {fileID: 4842883959399537535, guid: 790ff65a63e7ceb45b54d403ea48e4f8, type: 3}
+  Cooldowns:
+  - 2
 --- !u!1 &6686603741133983327
 GameObject:
   m_ObjectHideFlags: 0

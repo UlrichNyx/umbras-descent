@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6280869632354868457}
   - component: {fileID: 3332707197665652802}
   - component: {fileID: 1909274651317978424}
+  - component: {fileID: 4686980221418462528}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -59,6 +60,10 @@ MonoBehaviour:
   damage: 0.5
   AttackRange: 0.51
   IsDead: 0
+  isFlipped: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -259,6 +264,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4686980221418462528
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598713086687076913}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &3273578317381184160
 GameObject:
   m_ObjectHideFlags: 0

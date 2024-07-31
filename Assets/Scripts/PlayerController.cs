@@ -15,16 +15,18 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
 
     public float rollSpeed = 10f;
-    public float rollDuration = 0.5f;
+    public float rollDistance = 1f;
     public float rollCooldown = 1.5f;
 
     private bool isRolling = false;
     private float lastRollTime;
     public Inventory inventory;
     public bool canMove = true;
+    SpellsController spellsController;
     void Start()
     {
         inventory = GetComponent<Inventory>();
+        spellsController = GetComponent<SpellsController>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>(); 
         vacuumController = GetComponentInChildren<VacuumController>();
@@ -143,9 +145,10 @@ public class PlayerController : MonoBehaviour
         lastRollTime = Time.time;
 
         Vector2 rollDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        if(rollDirection == Vector2.zero) rollDirection = new Vector2(0,1);
         rb.velocity = rollDirection * rollSpeed;
 
-        yield return new WaitForSeconds(rollDuration);
+        yield return new WaitForSeconds(rollDistance/rollSpeed);
 
         isRolling = false;
         rb.velocity = Vector2.zero;  // Stop rolling
@@ -155,7 +158,9 @@ public class PlayerController : MonoBehaviour
 
     void CastSpell()
     {
-        Debug.Log("Spell cast");
+        
+        if(spellsController.CastSpell(0)) Debug.Log("Spell cast");
+        else Debug.Log("Its on cooldown");
         // Add your spell casting logic here
     }
 
