@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private float lastRollTime;
     public Inventory inventory;
     public bool canMove = true;
+    SpellsController spellsController;
     void Start()
     {
         inventory = GetComponent<Inventory>();
+        spellsController = GetComponent<SpellsController>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>(); 
         vacuumController = GetComponentInChildren<VacuumController>();
@@ -156,7 +158,9 @@ public class PlayerController : MonoBehaviour
 
     void CastSpell()
     {
-        Debug.Log("Spell cast");
+        
+        if(spellsController.CastSpell(0)) Debug.Log("Spell cast");
+        else Debug.Log("Its on cooldown");
         // Add your spell casting logic here
     }
 
