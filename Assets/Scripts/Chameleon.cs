@@ -71,6 +71,14 @@ public class Chameleon : Stats
     public override void Update()
     {
         base.Update();
+        if(agent.velocity.magnitude > 0.1f)
+        {
+            SetAnimatorParameter(AnimationParameters.Movement, true);
+        }
+        else
+        {
+            SetAnimatorParameter(AnimationParameters.Movement, false);
+        }
     }
 
     IEnumerator ChasePlayer()
@@ -89,13 +97,14 @@ public class Chameleon : Stats
                 if(distance >= StopAggroRange)
                 {
                     Aggroed = false;
-                    SetAnimatorParameter(AnimationParameters.Movement, false);
+                    
                     continue;
                 }
                 //Debug.Log("Preparing");
 
                 if(distance < AttackRange)
                 {
+                    agent.isStopped = true;
                     tongue.gameObject.SetActive(true);
                     myTongueScript.hit = false;
                     float timer = 0;
@@ -103,10 +112,6 @@ public class Chameleon : Stats
                     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     tongueParent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-                    if (agent.velocity.sqrMagnitude > 0.01f)
-                    {
-                        SetAnimatorParameter(AnimationParameters.Movement, false);
-                    }
                     while(timer <= 1 && !myTongueScript.hit)
                     {
                         timer += Time.deltaTime;
@@ -128,11 +133,11 @@ public class Chameleon : Stats
                         yield return null;
                     }
                     tongue.gameObject.SetActive(false);
+                    agent.isStopped = false;
                 }
                 else
                 {
                     agent.SetDestination(target);
-                    SetAnimatorParameter(AnimationParameters.Movement, true);
                 }
                 
             }
@@ -140,13 +145,11 @@ public class Chameleon : Stats
             {
                 agent.speed = moveSpeed;
                 agent.SetDestination(PatrolPoints[0]);
-                SetAnimatorParameter(AnimationParameters.Movement, true);
             }
             else if(color.a != 0.03f)
             {
                 color.a = 0.03f;
                 myBody.color = color;
-                SetAnimatorParameter(AnimationParameters.Movement, false);
             }
         }
     }

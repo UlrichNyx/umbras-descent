@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
 
     public float rollSpeed = 10f;
-    public float rollDuration = 0.5f;
+    public float rollDistance = 1f;
     public float rollCooldown = 1.5f;
 
     private bool isRolling = false;
@@ -143,9 +143,10 @@ public class PlayerController : MonoBehaviour
         lastRollTime = Time.time;
 
         Vector2 rollDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        if(rollDirection == Vector2.zero) rollDirection = new Vector2(0,1);
         rb.velocity = rollDirection * rollSpeed;
 
-        yield return new WaitForSeconds(rollDuration);
+        yield return new WaitForSeconds(rollDistance/rollSpeed);
 
         isRolling = false;
         rb.velocity = Vector2.zero;  // Stop rolling

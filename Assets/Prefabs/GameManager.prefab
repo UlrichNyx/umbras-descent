@@ -50,8 +50,12 @@ MonoBehaviour:
   PickUps: []
   AllItems:
   - {fileID: 11400000, guid: b3b22c46e933fa84b98cb288abb4e76c, type: 2}
+  - {fileID: 11400000, guid: 8b54c669c3ac0f6498a4fbab49b6470e, type: 2}
   - {fileID: 11400000, guid: 9e3f2d3f34da9c5438356da9fbdd1083, type: 2}
+  - {fileID: 11400000, guid: c97408124f8d9594ab35a0400092dbbe, type: 2}
   - {fileID: 11400000, guid: 798ae10397299f54c86a0bb79db43fb8, type: 2}
+  - {fileID: 11400000, guid: 33e2fd25c51573847a2a99e96efa1b71, type: 2}
   - {fileID: 11400000, guid: c370a82cf16ae9845b8d3513600858a5, type: 2}
   AllRecipes:
   - {fileID: 11400000, guid: 6680ea2b9e398c046b4b771357cd60ff, type: 2}
+  - {fileID: 11400000, guid: aa110030623f81b45a08897b9a89a78f, type: 2}
