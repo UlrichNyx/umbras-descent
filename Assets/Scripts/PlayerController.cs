@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Inventory inventory;
     public bool canMove = true;
     SpellsController spellsController;
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -37,10 +38,16 @@ public class PlayerController : MonoBehaviour
     {
         if(canMove)
         {
-            Move();
             HandleActions();
         }
-        HandleInteraction();
+         HandleInteraction();
+    }
+
+     void FixedUpdate() {
+        if(canMove)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -50,6 +57,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
         speedX =  Input.GetAxisRaw("Horizontal") * stats.moveSpeed;
+        stats.SetAnimatorParameter(Stats.AnimationParameters.Movement, speedX != 0 || speedY != 0 ? true :false );
+        Debug.Log(speedX >= 0);
+        stats.spriteRenderer.flipX = speedX >= 0 ? false : true; 
         speedY = Input.GetAxisRaw("Vertical") * stats.moveSpeed;
         rb.velocity = new Vector2(speedX, speedY);
     }

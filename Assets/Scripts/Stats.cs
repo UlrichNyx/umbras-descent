@@ -19,7 +19,7 @@ public class Stats : MonoBehaviour
     public bool invincible;
     public bool invisible;
     public float moveSpeed;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private float invisibleAlpha = 0.5f;
     private float visibleAlpha = 1f;
     private Color initialColor;
@@ -34,6 +34,8 @@ public class Stats : MonoBehaviour
     public Vector3 previousPosition;
 
     public Vector3 currentPosition;
+
+    public bool controlledSprite = true;
 
     public Animator animator;
     public enum AnimationParameters {
@@ -61,7 +63,12 @@ public class Stats : MonoBehaviour
 
     public void SetSpriteFlipped(float horizontalMovement)
     {
-        spriteRenderer.flipX = horizontalMovement >= 0 ? false : true;
+        if(!controlledSprite)
+        {
+            // Debug.Log(controlledSprite);
+            //spriteRenderer.flipX = horizontalMovement >= 0 ? false : true;
+        }
+        
     }
     
     public virtual void ModifyHealth(float amount)
@@ -82,11 +89,16 @@ public class Stats : MonoBehaviour
     public virtual void Update()
     {
         RainbowEffect();
+
+
+    }
+
+    public virtual void FixedUpdate()
+    {
         currentPosition = transform.position;
         float deltaX = currentPosition.x - previousPosition.x;
         SetSpriteFlipped(deltaX);
         previousPosition = currentPosition;
-
     }
 
     public void RainbowEffect()
