@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     SpellsController spellsController;
 
+    public SpriteRenderer vaccuumSprite;
+
+    public Transform leftSide;
+
+    public Transform rightSide;
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>(); 
         vacuumController = GetComponentInChildren<VacuumController>();
+        UIManager.instance.SetShadowEssenceSlider(stats.ShadowEssence);
     }
 
     // Update is called once per frame
@@ -58,8 +65,23 @@ public class PlayerController : MonoBehaviour
         }
         speedX =  Input.GetAxisRaw("Horizontal") * stats.moveSpeed;
         stats.SetAnimatorParameter(Stats.AnimationParameters.Movement, speedX != 0 || speedY != 0 ? true :false );
-        Debug.Log(speedX >= 0);
-        stats.spriteRenderer.flipX = speedX >= 0 ? false : true; 
+
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        // Convert the screen position to world position
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        if(mouseWorldPosition.x < transform.position.x)
+        {   
+            stats.spriteRenderer.flipX = true;
+            vaccuumSprite.transform.position = leftSide.position;
+        }
+        else if(mouseWorldPosition.x > transform.position.x)
+        {
+            stats.spriteRenderer.flipX = false;
+            vaccuumSprite.transform.position = rightSide.position;
+
+        }
+         
         speedY = Input.GetAxisRaw("Vertical") * stats.moveSpeed;
         rb.velocity = new Vector2(speedX, speedY);
     }

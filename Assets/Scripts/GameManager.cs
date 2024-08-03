@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -40,7 +38,12 @@ public class GameManager : Singleton<GameManager>
 
     public void PlayerDeath()
     {
-        Debug.Log("GAME OVER");
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Level 1");
     }
 
     public void SpawnItem(Vector3 position,Item item, int amount = 1)

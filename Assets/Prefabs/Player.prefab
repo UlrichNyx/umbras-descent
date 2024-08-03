@@ -28,10 +28,11 @@ Transform:
   m_GameObject: {fileID: 2226641713770958088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020275354, y: 0.015934944, z: 0}
+  m_LocalPosition: {x: 0.020275358, y: 0.015935302, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 402544411363684231}
   m_Father: {fileID: 3677235492259785695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6835495857427923802
@@ -180,12 +181,12 @@ Transform:
   m_GameObject: {fileID: 3786722949527179780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -0.08, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0.054241564, y: -0.03197839, z: -0.33333334}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 755549005997770143}
-  m_Father: {fileID: 3677235492259785695}
+  m_Father: {fileID: 352081097102112553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4095322140974471142
 SpriteRenderer:
@@ -428,9 +429,8 @@ Transform:
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 402544411363684231}
-  - {fileID: 3481583213988639556}
   - {fileID: 352081097102112553}
+  - {fileID: 3481583213988639556}
   - {fileID: 2341202288548094104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,6 +499,7 @@ MonoBehaviour:
   invincible: 0
   invisible: 0
   moveSpeed: 1
+  spriteRenderer: {fileID: 0}
   damage: 1
   AttackRange: 0.5
   IsDead: 0

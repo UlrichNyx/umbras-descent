@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject craftingUI;
     public GameObject InventoryLayout;
     public GameObject InvetorySlotPrefab;
+    public TextMeshProUGUI seTextValue;
     List<InventorySlot> InventorySlots;
 
     void Awake()
@@ -18,6 +20,8 @@ public class UIManager : Singleton<UIManager>
     public void SetShadowEssenceSlider(float currentShadowEssence)
     { 
         shadowEssenceSlider.value = currentShadowEssence / Stats.maxShadowEssence;
+        seTextValue.text = currentShadowEssence.ToString();
+
     }
 
     public void ToggleCraftingUI()

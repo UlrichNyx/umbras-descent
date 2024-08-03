@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Stats : MonoBehaviour
@@ -35,9 +33,11 @@ public class Stats : MonoBehaviour
 
     public Vector3 currentPosition;
 
-    public bool controlledSprite = true;
+    private bool controlledSprite;
 
     public Animator animator;
+
+    public bool isPlayer;
     public enum AnimationParameters {
         Movement
     }
@@ -48,6 +48,8 @@ public class Stats : MonoBehaviour
         initialColor = spriteRenderer.color;
         animator = GetComponentInChildren<Animator>();
         previousPosition = transform.position;
+        controlledSprite = true;
+        isPlayer = GetComponent<PlayerController>() != null;
     }
 
     
@@ -65,7 +67,7 @@ public class Stats : MonoBehaviour
     {
         if(!controlledSprite)
         {
-            // Debug.Log(controlledSprite);
+            Debug.Log(controlledSprite);
             //spriteRenderer.flipX = horizontalMovement >= 0 ? false : true;
         }
         
@@ -74,6 +76,10 @@ public class Stats : MonoBehaviour
     public virtual void ModifyHealth(float amount)
     {
         //Debug.Log("MODIFYING HEALTH");
+        if(isPlayer)
+        {
+            UIManager.instance.SetShadowEssenceSlider(ShadowEssence);
+        }
         ShadowEssence += amount;
         if(ShadowEssence <= 0)
         {
@@ -83,6 +89,7 @@ public class Stats : MonoBehaviour
         {
             ShadowEssence = maxShadowEssence;
         }
+
     }
 
 
